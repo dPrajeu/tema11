@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "https://www.thymeleaf.org/">
+<head>
+	<meta charset="UTF-8">
+	<title>Titlul paginii cu employees</title>
+</head>
+
+<style>
+	body{
+		background-image: url(//resources/templates/cool-background.png);
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+	}
+</style>
+
+<body>
+<h1>Employees records</h1>
+
+
+<table border="10", style="color: dimgrey; width : 100%">
+	<tr>
+		<th>customerID</th>
+		<th>FirstName</th>
+		<th>LastName</th>
+		<th>BirthDate</th>
+		<th>Phone</th>
+		<th>Address</th>
+		<th>City</th>
+		<th>State</th>
+		<th>points</th>
+
+	</tr>
+
+	<tr th:each="customer:${customerList}">
+		<td th:text="${customer.customerId}"></td>
+		<td th:text="${customer.firstName}"></td>
+		<td th:text="${customer.lastName}"></td>
+		<td th:text="${customer.birthDate}"></td>
+		<td th:text="${customer.phone}"></td>
+		<td th:text="${customer.address}"></td>
+		<td th:text="${customer.city}"></td>
+		<td th:text="${customer.state}"></td>
+		<td th:text="${customer.points}"></td>
+
+
+<!--		<td><a th:href="@{/customers/{customerID}/edit(employeeId=${customer.customerId})}">EDIT</a></td>-->
+<!--		<td><a th:href="@{/customers/{customerID}/edit(employeeId=${customer.customerId})}">DELETE</a></td>-->
+
+<!--		<td>-->
+<!--			<form th:action="@{/employees/{employeeId}/delete(employeeId=${customer.getCustomerId()})}"-->
+<!--			      method="POST">-->
+<!--				Delete this employee? <input type="submit" th:value="Yes"/>-->
+<!--			</form>-->
+<!--		</td>-->
+
+	</tr>
+
+
+
+</table>
+
+</div>
+</body>
+</html>
