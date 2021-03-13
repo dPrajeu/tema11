@@ -177,9 +177,9 @@
 <div style="color: azure; text-align: -webkit-left;font-size: xx-large "> Store Front Desk</div>
 <br>
 <div class="topnav">
-	<a class="active" href="#home" onclick="(location.href ='/store/mainPage')">Front Desk</a>
-	<a href="#customers"onclick="onclick=(location.href ='/store/showCustomer')">Customers</a>
-	<a href="#products" onclick="onclick=(location.href ='/store/showProduct')">Products</a>
+	<a class="active" href="#home" onclick="(location.href ='/store/main-page')">Front Desk</a>
+	<a href="#customers"onclick="onclick=(location.href ='/store/show-all-customers')">Customers</a>
+	<a href="#products" onclick="onclick=(location.href ='/store/show-all-products')">Products</a>
 	<a href="#orders">Orders</a>
 </div>
 
@@ -190,6 +190,7 @@
 <br>
 <form th:action="@{'/customer/' + ${customerToEdit.customerId}+'/edit'}"
       th:object="${customerToEdit}" th:method="POST">
+
 	<legend><h2>Update Customer ID  #<td th:text="${customerId}"></td>  </h2></legend>
 
 	<div class="row">

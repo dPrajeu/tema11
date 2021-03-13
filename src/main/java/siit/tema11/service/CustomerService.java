@@ -25,4 +25,8 @@ public class CustomerService {
     public CustomerEntity getCustomerByID(Integer id) {
         return customerRepository.findById(id).orElseThrow(()-> new CustomerNotFoundException("Customer ID not found!"));
     }
+
+    public CustomerEntity updateCustomerByID(CustomerEntity entity) {
+        return customerRepository.save(entity);
+    }
 }
