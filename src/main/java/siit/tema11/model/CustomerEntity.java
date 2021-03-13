@@ -25,7 +25,7 @@ public class CustomerEntity {
     @Column(name = "last_name")
     private String lastName;
     @Column(name="birth_date")
-    private LocalDate birthDate;
+    private String birthDate;
     private String phone;
     private String address;
     private String city;

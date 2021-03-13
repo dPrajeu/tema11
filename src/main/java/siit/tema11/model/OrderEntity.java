@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -28,9 +27,8 @@ public class OrderEntity {
     @Column(name = "order_date")
     private LocalDate orderDate;
 
-//    @JoinColumn(name ="status", referencedColumnName = "order_status_id")
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private Integer status;
+    @JoinColumn(name ="status", referencedColumnName = "order_status_id")
+    private Integer status;
 
 
 }

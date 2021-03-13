@@ -92,41 +92,29 @@
 <br>
 <div class = "topnav">
 	<a class="active" href="#home" onclick= "(location.href ='/store/mainPage')">Front Desk</a>
-	<a href="#customers">Customers</a>
+	<a href="#customers"onclick= "(location.href ='/store/showCustomer')">Customers</a>
 	<a href="#products" onclick="onclick=(location.href ='/store/showProduct')">Products</a>
 	<a href="#orders">Orders</a>
 </div>
 
-<div id="ShowCustomers">
+<div id="ShowProduct">
 
 </div>
 
 <br>
 <table>
 	<tr>
-		<th>Customer ID</th>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>Birth Date</th>
-		<th>Phone</th>
-		<th>Address</th>
-		<th>City</th>
-		<th>State</th>
-		<th>Points</th>
+		<th>ID</th>
+		<th>NAME</th>
+		<th>UNITS IN STOCK</th>
+		<th>UNIT PRICE</th>
 	</tr>
 
-	<tr th:each="customer:${customerList}">
-		<td th:text="${customer.customerId}"></td>
-		<td th:text="${customer.firstName}"></td>
-		<td th:text="${customer.lastName}"></td>
-		<td th:text="${customer.birthDate}"></td>
-		<td th:text="${customer.phone}"></td>
-		<td th:text="${customer.address}"></td>
-		<td th:text="${customer.city}"></td>
-		<td th:text="${customer.state}"></td>
-		<td th:text="${customer.points}"></td>
-		<td><a th:href="@{/store/{customerId}/edit(customerId =${customer.customerId})}">EDIT</a></td>
-		<td><a th:href="@{/store/{customerId}/edit(customerId =${customer.customerId})}">DELETE</a></td>
+	<tr th:each="product:${productList}">
+		<td th:text="${product.productId}"></td>
+		<td th:text="${product.name}"></td>
+		<td th:text="${product.quantityInStock}"></td>
+		<td th:text="${product.unitPrice}"></td>
 	</tr>
 </table>
 </body>

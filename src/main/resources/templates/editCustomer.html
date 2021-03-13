@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<head>
+	<meta charset="UTF-8">
+	<title>SpringMVC Project</title>
+	<style>
+
+		body {
+			margin: 20px;
+			font-family: Arial, sans-serif;
+		}
+
+		.topnav {
+			overflow: hidden;
+			background-color: #333;
+
+		}
+
+		.topnav a {
+			float: left;
+			display: block;
+			color: #f2f2f2;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			font-size: 17px;
+
+		}
+
+		.topnav a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+
+		.topnav a:active {
+			background-color: #4CAF50;
+			color: white;
+		}
+
+		@media screen and (max-width: 600px) {
+			.topnav a:not(:first-child) {
+				display: none;
+			}
+
+			.topnav a.icon {
+				float: right;
+				display: block;
+			}
+		}
+
+		@media screen and (max-width: 600px) {
+			.topnav.responsive {
+				position: relative;
+			}
+
+			.topnav.responsive .icon {
+				position: absolute;
+				right: 0;
+				top: 0;
+			}
+
+			.topnav.responsive a {
+				float: none;
+				display: block;
+				text-align: left;
+			}
+		}
+
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+			width: 100%;
+			border: none;
+
+		}
+
+		th {
+			text-align: left;
+			padding: 16px;
+			color: whitesmoke;
+			background-color: #333;
+
+		}
+
+		td {
+			text-align: left;
+			padding: 16px;
+			color: white;
+
+		}
+
+		tr:nth-child(even) {
+			background: rgba(238, 238, 238, 0.3);
+
+		}
+
+		form {
+			color: whitesmoke;
+			padding: 2% 2%;
+		}
+
+		input[type=text], select, textarea {
+			background-color: rgba(0,0,0,0.6);
+			color: white;
+			width: 100%;
+			padding: 12px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			resize: vertical;
+		}
+
+		label {
+			padding: 12px 12px 12px 0;
+			display: inline-block;
+		}
+
+		input[type=submit] {
+			background-color: #333;
+			color: white;
+			padding: 12px ;
+			width: 100%;
+			resize: vertical;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			float: right;
+
+		}
+
+		input[type=submit]:hover {
+			background-color: #45a049;
+		}
+
+		.container {
+			border-radius: 5px;
+			background-color: #f2f2f2;
+			padding: 20px;
+		}
+
+		.col-25 {
+			float: left;
+			width: 25%;
+			margin-top: 6px;
+		}
+
+		.col-50 {
+			float: left;
+			width: 50%;
+			margin-top: 6px;
+		}
+
+		/* Clear floats after the columns */
+		.row:after {
+			content: "";
+			display: table;
+			clear: both;
+		}
+
+		/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+		@media screen and (max-width: 600px) {
+			.col-25, .col-50, input[type=submit] {
+				width: 100%;
+				margin-top: 0;
+			}
+		}
+
+
+
+
+	</style>
+
+
+</head>
+
+<body style= "background-image : url(https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg)">
+<br>
+<div style="color: azure; text-align: -webkit-left;font-size: xx-large "> Store Front Desk</div>
+<br>
+<div class="topnav">
+	<a class="active" href="#home" onclick="(location.href ='/store/mainPage')">Front Desk</a>
+	<a href="#customers"onclick="onclick=(location.href ='/store/showCustomer')">Customers</a>
+	<a href="#products" onclick="onclick=(location.href ='/store/showProduct')">Products</a>
+	<a href="#orders">Orders</a>
+</div>
+
+<div id="ShowCustomers">
+
+</div>
+
+<br>
+<form th:action="@{'/customer/' + ${customerToEdit.customerId}+'/edit'}"
+      th:object="${customerToEdit}" th:method="POST">
+	<legend><h2>Update Customer ID  #<td th:text="${customerId}"></td>  </h2></legend>
+
+	<div class="row">
+		<div class="col-25">
+			<label>Customer ID</label>
+		</div>
+		<div class="col-50">
+			<td th:text="${customerId}"></td> <br><br>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-25">
+			<label for="bd">Birth Date</label>
+		</div>
+		<div class="col-50">
+			<input type="date" id="bd" name="bdate" th:field="*{birthDate}">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-25">
+			<label for="fname">First Name</label>
+		</div>
+		<div class="col-50">
+			<input type="text" id="fname" name="firstName" th:field="*{firstName}">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-25">
+			<label for="lname">Last Name</label>
+		</div>
+		<div class="col-50">
+			<input type="text" id="lname" name="lastName" th:field="*{lastName}">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-25">
+			<label for="phn">Phone Number</label>
+		</div>
+		<div class="col-50">
+			<input type="text" id="phn" name="phone" th:field="*{phone}">
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-25">
+			<label for="add">Address</label>
+		</div>
+		<div class="col-50">
+			<input type="text" id="add" name="address" th:field="*{address}">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-25">
+			<label for="ct">City</label>
+		</div>
+		<div class="col-50">
+			<input type="text" id="ct" name="city" th:field="*{city}">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-25">
+			<label for="st">State</label>
+		</div>
+		<div class="col-50">
+			<input type="text" id="st" name="state" th:field="*{state}">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-25">
+			<label for="pnt">Points</label>
+		</div>
+		<div class="col-50">
+			<input type="text" id="pnt" name="points" th:field="*{points}">
+		</div>
+	</div>
+
+	<br>
+	<br>
+	<div class="row">
+		<input type="submit" value="Submit">
+	</div>
+
+</form>
+</body>
+</html>

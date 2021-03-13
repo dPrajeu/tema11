@@ -4,6 +4,7 @@ package siit.tema11.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.stereotype.Service;
+import siit.tema11.exception.CustomerNotFoundException;
 import siit.tema11.model.CustomerEntity;
 import siit.tema11.repository.CustomerRepository;
 
@@ -21,4 +22,7 @@ public class CustomerService {
         return customerRepository.findAll();
     }
 
+    public CustomerEntity getCustomerByID(Integer id) {
+        return customerRepository.findById(id).orElseThrow(()-> new CustomerNotFoundException("Customer ID not found!"));
+    }
 }
