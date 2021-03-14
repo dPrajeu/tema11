@@ -34,6 +34,11 @@ public class CustomerController {
     }
 
 
+
+    //=================================================================================================
+    //===============================              EDIT            ====================================
+    //=================================================================================================
+
     @RequestMapping(method = RequestMethod.GET, path = "/{customerId}/edit")
     public String showEditPage(@PathVariable(name = "customerId") String id, ModelMap modelMap) {
 
@@ -42,11 +47,6 @@ public class CustomerController {
 
         return "editCustomer";
     }
-
-
-    //=================================================================================================
-    //===============================              POST            ====================================
-    //=================================================================================================
 
     @RequestMapping(method = RequestMethod.POST, path = "/{customerID}/edit")
     public String updateCustomer(@PathVariable String customerID, @ModelAttribute(name = "customerToEdit") CustomerUpdateRequest customerUpdateRequest, Model model) {

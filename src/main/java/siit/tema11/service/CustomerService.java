@@ -35,9 +35,17 @@ public class CustomerService {
     public CustomerEntity updateCustomerByID(CustomerUpdateRequest customerUpdateRequest) {
         CustomerEntity customerEntity = customerRepository.findById(customerUpdateRequest.getCustomerId()).orElseThrow(() -> new CustomerNotFoundException("Customer ID not found!"));
 
+        customerEntity.setFirstName(customerUpdateRequest.getFirstName());
+        customerEntity.setLastName(customerUpdateRequest.getLastName());
+        customerEntity.setBirthDate(customerUpdateRequest.getBirthDate());
+        customerEntity.setAddress(customerUpdateRequest.getAddress());
+        customerEntity.setCity(customerUpdateRequest.getCity());
+        customerEntity.setState(customerUpdateRequest.getState());
+        customerEntity.setPhone(customerUpdateRequest.getPhone());
+        customerEntity.setPoints(customerUpdateRequest.getPoints());
+
         return customerRepository.save(customerEntity);
     }
-
 
 
     public void deleteCustomerByID(Integer id) {
