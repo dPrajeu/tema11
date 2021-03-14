@@ -20,15 +20,19 @@ public class OrderEntity {
     @Column(name= "order_id")
     private Integer orderId;
 
-    @JoinColumn(name= "customer_id", referencedColumnName = "customer_id") //
-    @ManyToOne(fetch = FetchType.EAGER)
-    private CustomerEntity customerEntity;
+    @Column(name="customer_id")
+    private Integer customerId;
+
+//    @JoinColumn(name= "customer_id") //
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    private CustomerEntity customerEntity;
 
     @Column(name = "order_date")
     private LocalDate orderDate;
 
     @JoinColumn(name ="status", referencedColumnName = "order_status_id")
     private Integer status;
+
 
 
 }

@@ -188,17 +188,17 @@
 </div>
 
 <br>
-<form th:action="@{'/store/' + ${customerToEdit.customerId}+'/edit'}"
-      th:object="${customerToEdit}" th:method="POST">
+<form th:action="@{'/store/add-customer'}"
+      th:object="${customerToBeAdded}" th:method="POST">
 
-	<legend><h2>Update Customer ID  #<td th:text="${customerId}"></td>  </h2></legend>
+	<legend><h2>Add a customer"></td>  </h2></legend>
 
 	<div class="row">
 		<div class="col-25">
 			<label>Customer ID</label>
 		</div>
 		<div class="col-50">
-			<td th:text="${customerId}"></td> <br><br>
+			<td th:text="*{customerId}"></td> <br><br>
 		</div>
 	</div>
 
@@ -280,6 +280,7 @@
 	<div class="row">
 		<input type="submit" value="Submit">
 	</div>
+
 
 </form>
 </body>

@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "https://www.thymeleaf.org/">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
 	<meta charset="UTF-8">
 	<title>SpringMVC Project</title>
 	<style>
-		body{
+		body {
 			margin: 0;
 			font-family: Arial, sans-serif;
 		}
+
 		.topnav {
 			overflow: hidden;
 			background-color: #333;
 
 		}
-		.topnav a{
+
+		.topnav a {
 			float: left;
 			display: block;
 			color: #f2f2f2;
@@ -23,21 +25,28 @@
 			font-size: 17px;
 
 		}
-		.topnav a:hover{
+
+		.topnav a:hover {
 			background-color: #ddd;
 			color: black;
 		}
-		.topnav a:active{
+
+		.topnav a:active {
 			background-color: #4CAF50;
 			color: white;
 		}
+
 		@media screen and (max-width: 600px) {
-			.topnav a:not(:first-child) {display: none;}
+			.topnav a:not(:first-child) {
+				display: none;
+			}
+
 			.topnav a.icon {
 				float: right;
 				display: block;
 			}
 		}
+
 		@media screen and (max-width: 600px) {
 			.topnav.responsive {
 				position: relative;
@@ -55,31 +64,38 @@
 				text-align: left;
 			}
 		}
-		table{
+
+		table {
 			border-collapse: collapse;
 			border-spacing: 0;
 			width: 100%;
 			border: none;
 
 		}
-		th{
+
+		th {
 			text-align: left;
 			padding: 16px;
 			color: whitesmoke;
 			background-color: #333;
 
 		}
-		td{
+
+		td {
 			text-align: left;
 			padding: 16px;
 			color: white;
 
 		}
-		tr:nth-child(even){
-			background: rgba(238,238,238,0.3);
+
+		tr:nth-child(even) {
+			background: rgba(238, 238, 238, 0.3);
 
 		}
-
+		.addButton{
+			color: whitesmoke;
+			background-color: #333;
+		}
 
 	</style>
 
@@ -88,13 +104,13 @@
 
 <body style="background-image : url(https://htmlcolorcodes.com/assets/images/html-color-codes-color-tutorials-hero.jpg)">
 <br>
-<div style="color: azure; text-align: -webkit-left;font-size: xx-large " > Store Front Desk</div>
+<div style="color: azure; text-align: -webkit-left;font-size: xx-large "> Store Front Desk</div>
 <br>
-<div class = "topnav">
+<div class="topnav">
 	<a class="active" href="#home" onclick="(location.href ='/store/main-page')">Front Desk</a>
-	<a href="#customers"onclick="onclick=(location.href ='/store/show-all-customers')">Customers</a>
+	<a href="#customers" onclick="onclick=(location.href ='/store/show-all-customers')">Customers</a>
 	<a href="#products" onclick="onclick=(location.href ='/store/show-all-products')">Products</a>
-	<a href="#orders">Orders</a>
+	<a href="#orders"onclick="onclick=(location.href ='/store/show-all-orders')">Orders</a>
 </div>
 
 <div id="show-all-customers">
@@ -126,8 +142,16 @@
 		<td th:text="${customer.state}"></td>
 		<td th:text="${customer.points}"></td>
 		<td><a th:href="@{/store/{customerId}/edit(customerId =${customer.customerId})}">EDIT</a></td>
-		<td><a th:href="@{/store/{customerId}/edit(customerId =${customer.customerId})}">DELETE</a></td>
+		<td>
+			<form th:action="@{/store/{customerId}/delete(customerId=${customer.customerId})}"
+			      method="POST"><input type="submit" th:value="Delete"/>
+			</form>
+		</td>
+
 	</tr>
 </table>
+<div class="addButton">
+	<button style="color: whitesmoke" ><a th:href="@{/store/add-customer}">ADD</a></button>
+</div>
 </body>
 </html>

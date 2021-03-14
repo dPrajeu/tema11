@@ -97,24 +97,24 @@
 	<a href="#orders"onclick="onclick=(location.href ='/store/show-all-orders')">Orders</a>
 </div>
 
-<div id="ShowProduct">
+<div id="showOrders">
 
 </div>
 
 <br>
 <table>
 	<tr>
-		<th>ID</th>
-		<th>NAME</th>
-		<th>UNITS IN STOCK</th>
-		<th>UNIT PRICE</th>
+		<th>Order ID</th>
+		<th>Customer ID</th>
+		<th>Order date</th>
+		<th>Order status</th>
 	</tr>
 
-	<tr th:each="product:${productList}">
-		<td th:text="${product.productId}"></td>
-		<td th:text="${product.name}"></td>
-		<td th:text="${product.quantityInStock}"></td>
-		<td th:text="${product.unitPrice}"></td>
+	<tr th:each="order:${orderList}">
+		<td th:text="${order.orderId}"></td>
+		<td th:text="${order.customerId}"></td>
+		<td th:text="${order.orderDate}"></td>
+		<td th:text="${order.status}"></td>
 	</tr>
 </table>
 </body>
