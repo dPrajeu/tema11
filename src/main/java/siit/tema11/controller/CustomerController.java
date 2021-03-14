@@ -49,7 +49,7 @@ public class CustomerController {
     //=================================================================================================
 
     @RequestMapping(method = RequestMethod.POST, path = "/{customerID}/edit")
-    public String updateCustomer(@PathVariable String customerID, @ModelAttribute(name = "customerToEdit") @Valid CustomerUpdateRequest customerUpdateRequest, Model model) {
+    public String updateCustomer(@PathVariable String customerID, @ModelAttribute(name = "customerToEdit") CustomerUpdateRequest customerUpdateRequest, Model model) {
         customerUpdateRequest.setCustomerId(Integer.parseInt(customerID));
         customerService.updateCustomerByID(customerUpdateRequest);
         return showCustomersPage(model);
