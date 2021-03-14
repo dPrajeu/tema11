@@ -81,9 +81,9 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/add-customer")
     @ResponseStatus(HttpStatus.CREATED)
-    public String addCustomer(@ModelAttribute(name = "customerToAdd") CustomerEntity customerEntity,
+    public String addCustomer(@ModelAttribute(name = "customerToAdd") CustomerAddRequest customerAddRequest,
                               Model model) {
-        customerService.createCustomer(customerEntity);
+        customerService.createCustomer(customerAddRequest);
         return showCustomersPage(model);
     }
 

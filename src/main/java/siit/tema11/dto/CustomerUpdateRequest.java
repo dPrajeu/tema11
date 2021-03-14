@@ -18,7 +18,7 @@ public class CustomerUpdateRequest {
     private Integer customerId;
     private String firstName;
     private String lastName;
-    private LocalDate birthDate;
+    private String birthDate;
     private String phone;
     private String address;
     private String city;

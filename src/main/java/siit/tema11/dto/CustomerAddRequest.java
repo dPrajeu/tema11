@@ -29,7 +29,7 @@ public class CustomerAddRequest {
 
     @NotBlank
     @DateTimeFormat
-    private LocalDate birthDate;
+    private String birthDate;
 
     @NotBlank
     @Size(min=8, max = 15)
